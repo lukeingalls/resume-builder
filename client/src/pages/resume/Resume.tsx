@@ -125,7 +125,7 @@ export default function Resume() {
           <div className="grid grid-cols-12">
             <p className="col-span-3">
               {getDateMonthString(education.start_date)} -{" "}
-              {getDateMonthString(education.end_date) || "present"}
+              {getDateMonthString(education.end_date) || "Present"}
             </p>
             <div className="col-span-9">
               <h4 className="text-lg font-bold">
