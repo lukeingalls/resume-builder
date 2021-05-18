@@ -1,4 +1,4 @@
-import Resume from "./resume/Resume";
+import Resume from "./resume/NewResume";
 
 function App() {
   return <Resume />;

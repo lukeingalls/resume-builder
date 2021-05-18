@@ -94,6 +94,8 @@ export default function Resume() {
           {printUrl(resume.user.contact_info.github)}
         </span>
       </div>
+      <h3 className="text-lg font-bold">About Me</h3>
+      <hr className="my-5" />
       <p>{resume.about_me.description}</p>
       <div>
         <h3 className="text-lg font-bold">Experience</h3>
