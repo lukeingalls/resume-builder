@@ -1,5 +1,6 @@
 import { ExperienceSection, isSkills } from "../../../new_types";
 import { getDateMonthString } from "@utilities/utils";
+import SectionContainer from "@resume-themes/SectionContainer";
 
 interface ExperienceProps {
   experiences: ExperienceSection;
@@ -7,9 +8,7 @@ interface ExperienceProps {
 
 function Experience({ experiences }: ExperienceProps) {
   return (
-    <div>
-      <h3 className="text-lg font-bold">{experiences.type}</h3>
-      <hr className="my-5" />
+    <SectionContainer title={experiences.header}>
       {experiences.details.map((experienceItem) => (
         <div className="grid grid-cols-12">
           <p className="col-span-3">
@@ -33,7 +32,7 @@ function Experience({ experiences }: ExperienceProps) {
           </div>
         </div>
       ))}
-    </div>
+    </SectionContainer>
   );
 }
 
