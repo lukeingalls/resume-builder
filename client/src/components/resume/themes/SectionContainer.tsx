@@ -9,8 +9,12 @@ export default function SectionContainer({
 }: SectionContainerProps) {
   return (
     <div className="my-5">
-      <div>{title && <h3 className="text-lg font-bold">{title}</h3>}</div>
-      <hr className="mb-3" />
+      {title && (
+        <>
+          <h3 className="text-lg font-bold">{title}</h3>
+          <hr className="mb-3" />
+        </>
+      )}
       {children}
     </div>
   );
