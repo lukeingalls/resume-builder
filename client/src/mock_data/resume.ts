@@ -139,6 +139,7 @@ const projects: Section<Details> = {
       title: "Reddit Reader",
     },
   ],
+  type: "Generic",
 };
 
 const resume: Resume = {

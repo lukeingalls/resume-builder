@@ -44,6 +44,7 @@ export type Section<T> = {
   description?: string;
   details?: T[];
   header?: string;
+  type: Readonly<string>;
 };
 
 export type Skills = {
@@ -110,3 +111,12 @@ export type Resume = {
   user: User;
   sections: Section<Details>[];
 };
+
+export function isValidSection(x: any) {
+  return (
+    isAboutMeSection(x) ||
+    isEducationSection(x) ||
+    isExperienceSection(x) ||
+    isSkillsSection(x)
+  );
+}

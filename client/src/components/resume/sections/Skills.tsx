@@ -1,8 +1,15 @@
 import { isSkills, SkillsSection } from "../../../new_types";
 import SectionContainer from "@resume-themes/SectionContainer";
+import {
+  DraggableProvidedDraggableProps,
+  DraggableProvidedDragHandleProps,
+} from "react-beautiful-dnd";
+import React from "react";
 
-interface SkillsProps {
+interface SkillsProps extends React.ComponentPropsWithoutRef<"div"> {
   skills: SkillsSection;
+  draggableProps?: DraggableProvidedDraggableProps;
+  dragHandleProps?: DraggableProvidedDragHandleProps;
 }
 
 const renderLevels = (level: number) => {
@@ -27,28 +34,35 @@ interface LevelChunkProps {
   filled?: boolean;
 }
 
-function Skills({ skills }: SkillsProps) {
-  return (
-    <SectionContainer title={skills.type}>
-      <div className="grid grid-cols-12">
-        {skills.details.map((skill) => (
-          <>
-            {skill.bullets &&
-              isSkills(skill.bullets) &&
-              skill.bullets.map((bullet) => (
-                <>
-                  <span className="col-span-3" />
-                  <div className="col-span-9 flex items-center">
-                    {bullet.level && renderLevels(bullet.level)}
-                    <p className="pl-4">{bullet.skill}</p>
-                  </div>
-                </>
-              ))}
-          </>
-        ))}
-      </div>
-    </SectionContainer>
-  );
-}
+const Skills = React.forwardRef<HTMLDivElement, SkillsProps>(
+  ({ skills, draggableProps, dragHandleProps }, ref) => {
+    return (
+      <SectionContainer
+        ref={ref}
+        title={skills.type}
+        draggableProps={draggableProps}
+        dragHandleProps={dragHandleProps}
+      >
+        <div className="grid grid-cols-12">
+          {skills.details.map((skill) => (
+            <>
+              {skill.bullets &&
+                isSkills(skill.bullets) &&
+                skill.bullets.map((bullet) => (
+                  <>
+                    <span className="col-span-3" />
+                    <div className="col-span-9 flex items-center">
+                      {bullet.level && renderLevels(bullet.level)}
+                      <p className="pl-4">{bullet.skill}</p>
+                    </div>
+                  </>
+                ))}
+            </>
+          ))}
+        </div>
+      </SectionContainer>
+    );
+  }
+);
 
 export default Skills;

@@ -1,19 +1,15 @@
-import resume from "../../mock_data/resume";
-import {
-  isAboutMeSection,
-  isEducationSection,
-  isExperienceSection,
-  isSkillsSection,
-} from "../../new_types";
-import AboutMe from "@resume-sections/AboutMe";
-import Education from "@resume-sections/Education";
-import Experience from "@resume-sections/Experience";
-import Skills from "@resume-sections/Skills";
+import { useAppSelector } from "@store/hooks";
+import { Draggable, Droppable } from "react-beautiful-dnd";
+import SectionSelector from "@resume-sections/Selector";
+import { isValidSection } from "../../new_types";
 
 export default function Resume() {
+  const resume = useAppSelector((state) => state.resume);
   const printUrl = (url: URL) => {
     return `${url.hostname}${url.pathname}`;
   };
+
+  const sections = resume.sections.filter((section) => isValidSection(section));
 
   return (
     <div className="container mx-auto p-8">
@@ -37,15 +33,30 @@ export default function Resume() {
           {printUrl(resume.user.contact_info.github)}
         </span>
       </div>
-      {resume.sections.map((section) => {
-        if (isAboutMeSection(section)) return <AboutMe about_me={section} />;
-        if (isEducationSection(section))
-          return <Education educations={section} />;
-        if (isExperienceSection(section))
-          return <Experience experiences={section} />;
-        if (isSkillsSection(section)) return <Skills skills={section} />;
-        return null;
-      })}
+      <Droppable droppableId="resume-sections">
+        {(provided, snapshot) => (
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            {sections.map((section, idx) => {
+              return (
+                <Draggable
+                  draggableId={section.type}
+                  index={idx}
+                  key={section.header || idx}
+                >
+                  {(provided, snapshot) => (
+                    <SectionSelector
+                      section={section}
+                      draggableProps={provided.draggableProps}
+                      dragHandleProps={provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    />
+                  )}
+                </Draggable>
+              );
+            })}
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 }
