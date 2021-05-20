@@ -12,9 +12,11 @@ module.exports = {
   },
   webpack: {
     alias: {
-      "@utilities": getAliasPath("src/utilities/"),
+      "@components": getAliasPath("components/*"),
       "@resume-sections": getAliasPath("src/components/resume/sections/"),
       "@resume-themes": getAliasPath("src/components/resume/themes/"),
+      "@store": getAliasPath("src/store/"),
+      "@utilities": getAliasPath("src/utilities/"),
     },
   },
 };

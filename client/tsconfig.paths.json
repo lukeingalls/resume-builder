@@ -2,9 +2,11 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@utilities/*": ["utilities/*"],
+      "@components/*": ["components/*"],
       "@resume-sections/*": ["components/resume/sections/*"],
-      "@resume-themes/*": ["components/resume/themes/*"]
+      "@resume-themes/*": ["components/resume/themes/*"],
+      "@store/*": ["store/*"],
+      "@utilities/*": ["utilities/*"],
     }
   }  
 }
