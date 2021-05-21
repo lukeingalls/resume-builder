@@ -7,3 +7,10 @@ export const rearrangeSection = createAction<{
   startIdx: number;
   endIdx: number;
 }>("REARRANGE_SECTION");
+
+export const rearrangeBullets = createAction<{
+  type: string;
+  idx: number;
+  startIdx: number;
+  endIdx: number;
+}>("REARRANGE_BULLETS");

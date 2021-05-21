@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 export const getDateMonthString = (date: Date | null) => {
   if (!date) return date;
   let month = "";
@@ -41,4 +43,8 @@ export const getDateMonthString = (date: Date | null) => {
   }
   const year = date.getFullYear().toString();
   return `${month} ${year}`;
+};
+
+export const getNonce = (length: number = 5) => {
+  return crypto.randomBytes(length).toString("hex");
 };

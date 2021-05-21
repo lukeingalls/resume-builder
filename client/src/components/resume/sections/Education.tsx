@@ -23,7 +23,7 @@ const Education = React.forwardRef<HTMLDivElement, EducationProps>(
         draggableProps={draggableProps}
         dragHandleProps={dragHandleProps}
       >
-        {educations.details.map((education) => (
+        {educations.details.map((education, idx) => (
           <div className="grid grid-cols-12">
             <p className="col-span-3">
               {getDateMonthString(education.date!.start)} —{" "}
@@ -33,7 +33,11 @@ const Education = React.forwardRef<HTMLDivElement, EducationProps>(
               <h4 className="text-lg font-bold">
                 {education.degree}, {education.school}
               </h4>
-              <DisplayBullets bullets={education.bullets} />
+              <DisplayBullets
+                bullets={education.bullets}
+                type={educations.header}
+                idx={idx}
+              />
             </div>
           </div>
         ))}

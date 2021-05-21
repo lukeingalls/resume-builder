@@ -23,7 +23,7 @@ const Experience = React.forwardRef<HTMLDivElement, ExperienceProps>(
         draggableProps={draggableProps}
         dragHandleProps={dragHandleProps}
       >
-        {experiences.details.map((experienceItem) => (
+        {experiences.details.map((experienceItem, idx) => (
           <div className="grid grid-cols-12">
             <p className="col-span-3">
               {getDateMonthString(experienceItem.date!.start)} —{" "}
@@ -36,7 +36,11 @@ const Experience = React.forwardRef<HTMLDivElement, ExperienceProps>(
               <p className="italic">{`${experienceItem.location!.city}, ${
                 experienceItem.location!.state
               }`}</p>
-              <DisplayBullets bullets={experienceItem.bullets} />
+              <DisplayBullets
+                bullets={experienceItem.bullets}
+                type={experiences.type}
+                idx={idx}
+              />
             </div>
           </div>
         ))}
