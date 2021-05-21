@@ -14,7 +14,7 @@ module.exports = {
     alias: {
       "@components": getAliasPath("components/*"),
       "@resume-sections": getAliasPath("src/components/resume/sections/"),
-      "@resume-themes": getAliasPath("src/components/resume/themes/"),
+      "@resume-layouts": getAliasPath("src/components/resume/layouts/"),
       "@store": getAliasPath("src/store/"),
       "@utilities": getAliasPath("src/utilities/"),
     },

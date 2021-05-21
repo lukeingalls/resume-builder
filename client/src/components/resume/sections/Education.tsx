@@ -1,11 +1,12 @@
-import { EducationSection, isSkills } from "../../../new_types";
+import { EducationSection } from "../../../new_types";
 import { getDateMonthString } from "@utilities/utils";
-import SectionContainer from "@resume-themes/SectionContainer";
+import SectionContainer from "@resume-layouts/SectionContainer";
 import {
   DraggableProvidedDraggableProps,
   DraggableProvidedDragHandleProps,
 } from "react-beautiful-dnd";
 import React from "react";
+import DisplayBullets from "../layouts/DisplayBullets";
 
 interface EducationProps extends React.ComponentPropsWithoutRef<"div"> {
   educations: EducationSection;
@@ -32,19 +33,7 @@ const Education = React.forwardRef<HTMLDivElement, EducationProps>(
               <h4 className="text-lg font-bold">
                 {education.degree}, {education.school}
               </h4>
-              <ul>
-                {education.bullets &&
-                  !isSkills(education.bullets) &&
-                  education.bullets.map((bullet) => {
-                    if (bullet && typeof bullet === "string")
-                      return (
-                        <li className="list-disc list-item list-inside">
-                          {bullet}
-                        </li>
-                      );
-                    return null;
-                  })}
-              </ul>
+              <DisplayBullets bullets={education.bullets} />
             </div>
           </div>
         ))}

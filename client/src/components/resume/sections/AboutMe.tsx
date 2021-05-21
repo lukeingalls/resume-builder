@@ -1,4 +1,4 @@
-import SectionContainer from "@resume-themes/SectionContainer";
+import SectionContainer from "@resume-layouts/SectionContainer";
 import React from "react";
 import {
   DraggableProvidedDraggableProps,

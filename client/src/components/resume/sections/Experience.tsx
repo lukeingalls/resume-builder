@@ -1,11 +1,12 @@
-import { ExperienceSection, isSkills } from "../../../new_types";
+import { ExperienceSection } from "../../../new_types";
 import { getDateMonthString } from "@utilities/utils";
-import SectionContainer from "@resume-themes/SectionContainer";
+import SectionContainer from "@resume-layouts/SectionContainer";
 import {
   DraggableProvidedDraggableProps,
   DraggableProvidedDragHandleProps,
 } from "react-beautiful-dnd";
 import React from "react";
+import DisplayBullets from "../layouts/DisplayBullets";
 
 interface ExperienceProps extends React.ComponentPropsWithoutRef<"div"> {
   experiences: ExperienceSection;
@@ -35,15 +36,7 @@ const Experience = React.forwardRef<HTMLDivElement, ExperienceProps>(
               <p className="italic">{`${experienceItem.location!.city}, ${
                 experienceItem.location!.state
               }`}</p>
-              <ul>
-                {experienceItem.bullets &&
-                  !isSkills(experienceItem.bullets) &&
-                  experienceItem.bullets.map((bullet) => (
-                    <li className="list-disc list-item list-inside">
-                      {bullet}
-                    </li>
-                  ))}
-              </ul>
+              <DisplayBullets bullets={experienceItem.bullets} />
             </div>
           </div>
         ))}

@@ -100,24 +100,19 @@ const skills: SkillsSection = {
   header: "Skills",
   details: [
     {
-      bullets: [
-        {
-          skill: "React",
-          level: 5,
-        },
-        {
-          skill: "Javascript",
-          level: 4,
-        },
-        {
-          skill: "Python",
-          level: 3,
-        },
-        {
-          skill: "Node",
-          level: 4,
-        },
-      ],
+      skill: {
+        type: "React",
+        level: 5,
+      },
+    },
+    {
+      skill: { type: "Javascript", level: 4 },
+    },
+    {
+      skill: { type: "Python", level: 3 },
+    },
+    {
+      skill: { type: "Node", level: 4 },
     },
   ],
   type: "Skills",

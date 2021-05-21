@@ -33,7 +33,7 @@ export default function Resume() {
           {printUrl(resume.user.contact_info.github)}
         </span>
       </div>
-      <Droppable droppableId="resume-sections">
+      <Droppable droppableId="resume-sections" type="RESUME_SECTION">
         {(provided, snapshot) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             {sections.map((section, idx) => {

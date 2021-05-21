@@ -4,7 +4,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@resume-sections/*": ["components/resume/sections/*"],
-      "@resume-themes/*": ["components/resume/themes/*"],
+      "@resume-layouts/*": ["components/resume/layouts/*"],
       "@store/*": ["store/*"],
       "@utilities/*": ["utilities/*"],
     }

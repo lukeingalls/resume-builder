@@ -17,20 +17,15 @@ type Rename<T, K extends keyof T, N extends string> = Pick<
  * ==============================================
  */
 
-export function isSkills(x: BulletPoints): x is Skills[] {
-  return typeof x[0] !== "string";
-}
-
-export type BulletPoints = string[] | Skills[];
-
 export type Details = {
-  bullets?: BulletPoints;
+  bullets?: string[];
   date?: {
     end: Date | null;
     start: Date;
   };
   description?: string;
   location?: Location;
+  skill?: Skill;
   subtitle?: string;
   title?: string;
 };
@@ -47,8 +42,8 @@ export type Section<T> = {
   type: Readonly<string>;
 };
 
-export type Skills = {
-  skill: string;
+export type Skill = {
+  type: string;
   level?: number;
 };
 
@@ -105,7 +100,7 @@ export type SkillsSection = Required<
 > &
   Readonly<{ type: "Skills" }>;
 
-export type SkillsDetails = Pick<Details, "bullets">;
+export type SkillsDetails = Pick<Details, "skill">;
 
 export type Resume = {
   user: User;
