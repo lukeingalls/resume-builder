@@ -21,6 +21,7 @@ function App() {
       return;
     }
     if (result.type.includes("BULLET")) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       let [_, type, idx] = result.type.split("-");
       if (!idx) idx = "0";
       if (!result.destination) return;

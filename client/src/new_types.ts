@@ -17,25 +17,25 @@ type Rename<T, K extends keyof T, N extends string> = Pick<
  * ==============================================
  */
 
-export type Details = {
+export type TDetails = {
   bullets?: string[];
   date?: {
     end: Date | null;
     start: Date;
   };
   description?: string;
-  location?: Location;
+  location?: TLocation;
   skill?: Skill;
   subtitle?: string;
   title?: string;
 };
 
-export type Location = {
+export type TLocation = {
   city?: string;
   state?: string;
 };
 
-export type Section<T> = {
+export type TSection<T> = {
   description?: string;
   details?: T[];
   header?: string;
@@ -52,59 +52,59 @@ export type Skill = {
  * ==============================================
  */
 
-export function isAboutMeSection(x: any): x is AboutMeSection {
+export function isAboutMeSection(x: any): x is TAboutMeSection {
   return x.type === "About Me";
 }
 
-export type AboutMeSection = Required<
-  Pick<Section<undefined>, "description" | "header">
+export type TAboutMeSection = Required<
+  Pick<TSection<undefined>, "description" | "header">
 > &
   Readonly<{ type: "About Me" }>;
 
-export function isEducationSection(x: any): x is EducationSection {
+export function isEducationSection(x: any): x is TEducationSection {
   return x.type === "Education";
 }
 
-export type EducationSection = Required<
-  Pick<Section<EducationDetails>, "header" | "details">
+export type TEducationSection = Required<
+  Pick<TSection<TEducationDetails>, "header" | "details">
 > &
   Readonly<{ type: "Education" }>;
 
-export type EducationDetails = Pick<
-  Details,
+export type TEducationDetails = Pick<
+  TDetails,
   "bullets" | "date" | "description" | "location"
 > &
-  Rename<Details, "title" | "subtitle", "degree" | "school">;
+  Rename<TDetails, "title" | "subtitle", "degree" | "school">;
 
-export function isExperienceSection(x: any): x is ExperienceSection {
+export function isExperienceSection(x: any): x is TExperienceSection {
   return x.type === "Experience";
 }
 
-export type ExperienceSection = Required<
-  Pick<Section<ExperienceDetails>, "header" | "details">
+export type TExperienceSection = Required<
+  Pick<TSection<TExperienceDetails>, "header" | "details">
 > &
   Readonly<{ type: "Experience" }>;
 
-export type ExperienceDetails = Pick<
-  Details,
+export type TExperienceDetails = Pick<
+  TDetails,
   "bullets" | "date" | "description" | "location"
 > &
-  Rename<Details, "title" | "subtitle", "position" | "company">;
+  Rename<TDetails, "title" | "subtitle", "position" | "company">;
 
-export function isSkillsSection(x: any): x is SkillsSection {
+export function isSkillsSection(x: any): x is TSkillsSection {
   return x.type === "Skills";
 }
 
-export type SkillsSection = Required<
-  Pick<Section<SkillsDetails>, "header" | "details">
+export type TSkillsSection = Required<
+  Pick<TSection<TSkillsDetails>, "header" | "details">
 > &
   Readonly<{ type: "Skills" }>;
 
-export type SkillsDetails = Pick<Details, "skill">;
+export type TSkillsDetails = Pick<TDetails, "skill">;
 
-export type Resume = {
+export type TResume = {
   user: User;
-  sections: Section<Details>[];
+  sections: TSection<TDetails>[];
 };
 
 export function isValidSection(x: any) {

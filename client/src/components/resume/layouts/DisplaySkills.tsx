@@ -1,4 +1,4 @@
-import { SkillsDetails } from "../../../new_types";
+import { TSkillsDetails } from "../../../new_types";
 
 interface LevelChunkProps {
   filled?: boolean;
@@ -23,7 +23,7 @@ const renderLevels = (level: number) => {
 };
 
 interface SkillsBulletsProps {
-  skills: SkillsDetails[] | undefined;
+  skills: TSkillsDetails[] | undefined;
 }
 
 export default function SkillsBullets({ skills }: SkillsBulletsProps) {

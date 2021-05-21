@@ -4,10 +4,10 @@ import {
   DraggableProvidedDraggableProps,
   DraggableProvidedDragHandleProps,
 } from "react-beautiful-dnd";
-import { AboutMeSection } from "../../../new_types";
+import { TAboutMeSection } from "../../../new_types";
 
 interface AboutMeProps extends React.ComponentPropsWithoutRef<"div"> {
-  about_me: AboutMeSection;
+  about_me: TAboutMeSection;
   draggableProps?: DraggableProvidedDraggableProps;
   dragHandleProps?: DraggableProvidedDragHandleProps;
 }

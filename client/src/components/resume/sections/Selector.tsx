@@ -1,10 +1,10 @@
 import {
-  Details,
+  TDetails,
   isAboutMeSection,
   isEducationSection,
   isExperienceSection,
   isSkillsSection,
-  Section,
+  TSection,
 } from "../../../new_types";
 import {
   DraggableProvidedDraggableProps,
@@ -17,7 +17,7 @@ import Skills from "./Skills";
 import React from "react";
 
 interface SectionSelectorProps extends React.ComponentPropsWithoutRef<"div"> {
-  section: Section<Details>;
+  section: TSection<TDetails>;
   draggableProps?: DraggableProvidedDraggableProps;
   dragHandleProps?: DraggableProvidedDragHandleProps;
 }

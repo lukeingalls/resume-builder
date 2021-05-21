@@ -1,4 +1,4 @@
-import { EducationSection } from "../../../new_types";
+import { TEducationSection } from "../../../new_types";
 import { getDateMonthString } from "@utilities/utils";
 import SectionContainer from "@resume-layouts/SectionContainer";
 import {
@@ -9,7 +9,7 @@ import React from "react";
 import DisplayBullets from "../layouts/DisplayBullets";
 
 interface EducationProps extends React.ComponentPropsWithoutRef<"div"> {
-  educations: EducationSection;
+  educations: TEducationSection;
   draggableProps?: DraggableProvidedDraggableProps;
   dragHandleProps?: DraggableProvidedDragHandleProps;
 }

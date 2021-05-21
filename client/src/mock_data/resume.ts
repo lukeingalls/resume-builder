@@ -1,11 +1,11 @@
 import {
-  AboutMeSection,
-  Details,
-  EducationSection,
-  ExperienceSection,
-  Resume,
-  Section,
-  SkillsSection,
+  TAboutMeSection,
+  TDetails,
+  TEducationSection,
+  TExperienceSection,
+  TResume,
+  TSection,
+  TSkillsSection,
 } from "../new_types";
 import { User } from "../types";
 
@@ -28,14 +28,14 @@ const me: User = {
   name: "Luke Ingalls",
 };
 
-const aboutMe: AboutMeSection = {
+const aboutMe: TAboutMeSection = {
   header: "About Me",
   description:
     "I am a fullstack developer with a passion for finance. I'm looking for positions in an entreprenurial setting.",
   type: "About Me",
 };
 
-const education: EducationSection = {
+const education: TEducationSection = {
   header: "Education",
   details: [
     {
@@ -55,7 +55,7 @@ const education: EducationSection = {
   type: "Education",
 };
 
-const experience: ExperienceSection = {
+const experience: TExperienceSection = {
   header: "Experience",
   details: [
     {
@@ -96,7 +96,7 @@ const experience: ExperienceSection = {
   type: "Experience",
 };
 
-const skills: SkillsSection = {
+const skills: TSkillsSection = {
   header: "Skills",
   details: [
     {
@@ -118,7 +118,7 @@ const skills: SkillsSection = {
   type: "Skills",
 };
 
-const projects: Section<Details> = {
+const projects: TSection<TDetails> = {
   header: "Projects",
   details: [
     {
@@ -137,7 +137,7 @@ const projects: Section<Details> = {
   type: "Generic",
 };
 
-const resume: Resume = {
+const resume: TResume = {
   user: me,
   sections: [aboutMe, education, experience, skills, projects],
 };

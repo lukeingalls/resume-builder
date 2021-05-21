@@ -1,4 +1,4 @@
-import { SkillsSection } from "../../../new_types";
+import { TSkillsSection } from "../../../new_types";
 import SectionContainer from "@resume-layouts/SectionContainer";
 import {
   DraggableProvidedDraggableProps,
@@ -8,7 +8,7 @@ import React from "react";
 import SkillsBullets from "../layouts/DisplaySkills";
 
 interface SkillsProps extends React.ComponentPropsWithoutRef<"div"> {
-  skills: SkillsSection;
+  skills: TSkillsSection;
   draggableProps?: DraggableProvidedDraggableProps;
   dragHandleProps?: DraggableProvidedDragHandleProps;
 }
