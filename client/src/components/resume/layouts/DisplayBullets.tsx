@@ -22,25 +22,34 @@ export default function DisplayBullets({
   const id = `BULLETS-${type ? type : getNonce()}-${idx || ""}`;
   return (
     <Droppable droppableId={id} type={id}>
-      {(provided, snapshot) => (
-        <ul ref={provided.innerRef} {...provided.droppableProps}>
-          {bullets.map((bullet, idx) => (
-            <Draggable draggableId={bullet} index={idx} key={bullet}>
-              {(provided, snapshot) => (
-                <li
-                  className="list-disc list-item list-inside w-max"
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  {bullet}
-                </li>
-              )}
-            </Draggable>
-          ))}
-          {provided.placeholder}
-        </ul>
-      )}
+      {(provided, snapshot) => {
+        const draggingClasses = snapshot.isDraggingOver ? "bg-blue-100" : "";
+        return (
+          <ul
+            className={`${draggingClasses} hover:bg-blue-50`}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {bullets.map((bullet, idx) => (
+              <Draggable draggableId={bullet} index={idx} key={bullet}>
+                {(provided, snapshot) => {
+                  return (
+                    <li
+                      className="list-disc list-item list-outside ml-4"
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      {bullet}
+                    </li>
+                  );
+                }}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ul>
+        );
+      }}
     </Droppable>
   );
 }
