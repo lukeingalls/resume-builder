@@ -1,4 +1,4 @@
-import { TEducationSection } from "../../../new_types";
+import { TEducationSection } from "../../../types";
 import { getDateMonthString } from "@utilities/utils";
 import SectionContainer from "@resume-layouts/SectionContainer";
 import {

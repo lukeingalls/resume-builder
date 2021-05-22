@@ -7,7 +7,7 @@ import {
   TSection,
   TSkillsSection,
   TUser,
-} from "../new_types";
+} from "../types";
 
 const me: TUser = {
   address: {

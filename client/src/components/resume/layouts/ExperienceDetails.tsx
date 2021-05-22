@@ -1,5 +1,5 @@
 import DetailsContainer from "./DetailsConatiner";
-import { TExperienceDetails } from "../../../new_types";
+import { TExperienceDetails } from "../../../types";
 import { getDateMonthString } from "@utilities/utils";
 import DisplayBullets from "./DisplayBullets";
 

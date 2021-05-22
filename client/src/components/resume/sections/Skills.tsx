@@ -1,4 +1,4 @@
-import { TSkillsSection } from "../../../new_types";
+import { TSkillsSection } from "../../../types";
 import SectionContainer from "@resume-layouts/SectionContainer";
 import {
   DraggableProvidedDraggableProps,

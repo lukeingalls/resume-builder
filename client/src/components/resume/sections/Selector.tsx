@@ -5,7 +5,7 @@ import {
   isExperienceSection,
   isSkillsSection,
   TSection,
-} from "../../../new_types";
+} from "../../../types";
 import {
   DraggableProvidedDraggableProps,
   DraggableProvidedDragHandleProps,

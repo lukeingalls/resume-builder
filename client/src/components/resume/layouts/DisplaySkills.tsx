@@ -1,4 +1,4 @@
-import { TSkillsDetails } from "../../../new_types";
+import { TSkillsDetails } from "../../../types";
 
 interface LevelChunkProps {
   filled?: boolean;

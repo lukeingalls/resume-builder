@@ -1,7 +1,7 @@
 import { useAppSelector } from "@store/hooks";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import SectionSelector from "@resume-sections/Selector";
-import { isValidSection } from "../../new_types";
+import { isValidSection } from "../../types";
 
 export default function Resume() {
   const resume = useAppSelector((state) => state.resume);

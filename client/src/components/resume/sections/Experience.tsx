@@ -1,4 +1,4 @@
-import { TExperienceSection } from "../../../new_types";
+import { TExperienceSection } from "../../../types";
 import SectionContainer from "@resume-layouts/SectionContainer";
 import {
   DraggableProvidedDraggableProps,
