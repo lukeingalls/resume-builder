@@ -6,10 +6,10 @@ import {
   TResume,
   TSection,
   TSkillsSection,
+  TUser,
 } from "../new_types";
-import { User } from "../types";
 
-const me: User = {
+const me: TUser = {
   address: {
     city: "Parker",
     country: "USA",
@@ -19,9 +19,20 @@ const me: User = {
   },
   contact_info: {
     email: "lukeingalls@me.com",
-    github: new URL("https://github.com/lukeingalls"),
-    linkedin: new URL("https://www.linkedin.com/in/luke-ingalls/"),
-    personal_site: new URL("http://lukeingalls.com"),
+    links: [
+      {
+        site: "Github",
+        url: "https://github.com/lukeingalls",
+      },
+      {
+        site: "LinkedIn",
+        url: "https://www.linkedin.com/in/luke-ingalls/",
+      },
+      {
+        site: "My Site",
+        url: "https://lukeingalls.com",
+      },
+    ],
     phone_number: "720-467-3609",
   },
   current_title: "Fullstack Engineer",

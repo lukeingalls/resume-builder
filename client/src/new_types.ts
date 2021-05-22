@@ -3,8 +3,6 @@
  * ==============================================
  */
 
-import { User } from "./types";
-
 // https://stackoverflow.com/a/52702528/14034323
 type Rename<T, K extends keyof T, N extends string> = Pick<
   T,
@@ -17,6 +15,20 @@ type Rename<T, K extends keyof T, N extends string> = Pick<
  * ==============================================
  */
 
+export type TAddress = {
+  city: string;
+  country?: string;
+  state: string;
+  street_address: string;
+  zip: string;
+};
+
+export type TContactInfo = {
+  email: string;
+  links: Array<{ site: string; url: string }>;
+  phone_number: string;
+};
+
 export type TDetails = {
   bullets?: string[];
   date?: {
@@ -25,7 +37,7 @@ export type TDetails = {
   };
   description?: string;
   location?: TLocation;
-  skill?: Skill;
+  skill?: TSkill;
   subtitle?: string;
   title?: string;
 };
@@ -42,9 +54,16 @@ export type TSection<T> = {
   type: Readonly<string>;
 };
 
-export type Skill = {
+export type TSkill = {
   type: string;
   level?: number;
+};
+
+export type TUser = {
+  address: TAddress;
+  contact_info: TContactInfo;
+  current_title: string;
+  name: string;
 };
 
 /* ==============================================
@@ -103,7 +122,7 @@ export type TSkillsSection = Required<
 export type TSkillsDetails = Pick<TDetails, "skill">;
 
 export type TResume = {
-  user: User;
+  user: TUser;
   sections: TSection<TDetails>[];
 };
 
