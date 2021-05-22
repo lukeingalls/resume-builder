@@ -54,6 +54,7 @@ export default function Resume() {
                 </Draggable>
               );
             })}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>

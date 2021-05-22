@@ -1,7 +1,7 @@
 import crypto from "crypto";
 
 export const getDateMonthString = (date: Date | null) => {
-  if (!date) return date;
+  if (!date) return "Present";
   let month = "";
   switch (date.getMonth()) {
     case 1:

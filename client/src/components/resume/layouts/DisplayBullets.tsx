@@ -28,7 +28,7 @@ export default function DisplayBullets({
             <Draggable draggableId={bullet} index={idx} key={bullet}>
               {(provided, snapshot) => (
                 <li
-                  className="list-disc list-item list-inside"
+                  className="list-disc list-item list-inside w-max"
                   ref={provided.innerRef}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
@@ -38,6 +38,7 @@ export default function DisplayBullets({
               )}
             </Draggable>
           ))}
+          {provided.placeholder}
         </ul>
       )}
     </Droppable>
