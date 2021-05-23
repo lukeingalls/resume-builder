@@ -7,6 +7,25 @@ export const changeAboutMeDescription = createAction<{ description: string }>(
 export const changeName = createAction<{ name: string }>("CHANGE_NAME");
 export const changeTitle = createAction<{ title: string }>("CHANGE_TITLE");
 
+export const setEducationDegree = createAction<{ degree: string; idx: number }>(
+  "CHANGE_EDUCATION_DEGREE"
+);
+
+export const setEducationInstitution = createAction<{
+  institution: string;
+  idx: number;
+}>("CHANGE_EDUCATION_INSTITUTION");
+
+export const setExperiencePosition = createAction<{
+  position: string;
+  idx: number;
+}>("CHANGE_EXPERIENCE_TITLE");
+
+export const setExperienceCompany = createAction<{
+  company: string;
+  idx: number;
+}>("CHANGE_EXPERIENCE_COMPANY");
+
 export const setResume = createAction<TResume | undefined>("SET_RESUME");
 
 export const rearrangeSection =

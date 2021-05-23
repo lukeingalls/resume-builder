@@ -1,26 +1,26 @@
 import DetailsContainer from "./DetailsConatiner";
-import { TExperienceDetails } from "../../../types";
+import { TEducationDetails } from "../../../types";
 import { getDateMonthString } from "@utilities/utils";
 import DisplayBullets from "./DisplayBullets";
 import Input from "@components/utilities/Input";
 import { useAppDispatch } from "@store/hooks";
 import {
-  setExperienceCompany,
-  setExperiencePosition,
+  setEducationDegree,
+  setEducationInstitution,
 } from "@store/actions/resume";
 
-interface ExperienceDetailsProps {
-  experiences: TExperienceDetails[];
+interface EducationDetailsProps {
+  education: TEducationDetails[];
 }
 
-export default function ExperienceDetails({
-  experiences,
-}: ExperienceDetailsProps) {
+export default function EducationDetails({
+  education: _education,
+}: EducationDetailsProps) {
   const dispatch = useAppDispatch();
   return (
     <>
-      {experiences.map((experience, idx) => {
-        const { date, location } = experience;
+      {_education.map((education, idx) => {
+        const { date, location } = education;
         const dateString = date
           ? `${getDateMonthString(date.start)} — ${getDateMonthString(
               date.end
@@ -30,26 +30,29 @@ export default function ExperienceDetails({
           <DetailsContainer>
             {date && <p className="col-span-3">{dateString}</p>}
             <div className="col-span-9">
-              <h4 className="text-lg">
+              <h4 className="text-lg font-bold">
                 <Input
-                  className="font-bold"
-                  placeholder="Job Title"
+                  className="text-lg font-bold"
+                  placeholder="Degree"
                   onChange={(e) =>
                     dispatch(
-                      setExperiencePosition({ position: e.target.value, idx })
+                      setEducationDegree({ degree: e.target.value, idx })
                     )
                   }
-                  value={experience.position}
+                  value={education.degree}
                 />
                 ,{" "}
                 <Input
-                  placeholder="Company"
+                  placeholder="Institution"
                   onChange={(e) =>
                     dispatch(
-                      setExperienceCompany({ company: e.target.value, idx })
+                      setEducationInstitution({
+                        institution: e.target.value,
+                        idx,
+                      })
                     )
                   }
-                  value={experience.company}
+                  value={education.school}
                 />
               </h4>
               {location && (
@@ -58,8 +61,8 @@ export default function ExperienceDetails({
                 </p>
               )}
               <DisplayBullets
-                bullets={experience.bullets}
-                type={"Experience"}
+                bullets={education.bullets}
+                type={"Education"}
                 idx={idx}
               />
             </div>

@@ -60,7 +60,6 @@ const SectionSelector = React.forwardRef<HTMLDivElement, SectionSelectorProps>(
           ref={ref}
         />
       );
-    // console.log(null);
     return null;
   }
 );

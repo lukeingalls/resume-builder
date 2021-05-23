@@ -1,5 +1,6 @@
 import { getNonce } from "@utilities/utils";
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import { GrDrag } from "react-icons/gr";
 
 interface DisplayBulletsProps {
   bullets: string[] | undefined;
@@ -35,12 +36,15 @@ export default function DisplayBullets({
                 {(provided, snapshot) => {
                   return (
                     <li
-                      className="list-disc list-item list-outside ml-4"
+                      className="list-item list-outside items-center"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
-                      {...provided.dragHandleProps}
                     >
-                      {bullet}
+                      <span {...provided.dragHandleProps}>
+                        <GrDrag className="inline-block mr-2" />
+                      </span>
+
+                      <span>{bullet}</span>
                     </li>
                   );
                 }}

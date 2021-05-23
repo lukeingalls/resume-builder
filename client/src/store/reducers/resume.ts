@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { TEducationSection, TExperienceSection } from "types";
 import resume from "../../mock_data/resume";
 import {
   changeAboutMeDescription,
@@ -6,6 +7,10 @@ import {
   changeTitle,
   rearrangeBullets,
   rearrangeSection,
+  setEducationDegree,
+  setEducationInstitution,
+  setExperienceCompany,
+  setExperiencePosition,
   setResume,
 } from "../actions/resume";
 
@@ -32,6 +37,58 @@ const exports = {
       state.user.current_title = title;
       return state;
     });
+    builder.addCase(setEducationDegree, (state, action) => {
+      const { degree, idx: detailsIdx } = action.payload;
+      const educationIdx = state.sections.findIndex(
+        (section) => section.type === "Education"
+      );
+      if (educationIdx === -1) return state;
+      const educationSection = state.sections[
+        educationIdx
+      ] as TEducationSection;
+      educationSection.details[detailsIdx].degree = degree;
+      state.sections[educationIdx] = educationSection;
+      return state;
+    });
+    builder.addCase(setEducationInstitution, (state, action) => {
+      const { institution, idx: detailsIdx } = action.payload;
+      const educationIdx = state.sections.findIndex(
+        (section) => section.type === "Education"
+      );
+      if (educationIdx === -1) return state;
+      const educationSection = state.sections[
+        educationIdx
+      ] as TEducationSection;
+      educationSection.details[detailsIdx].school = institution;
+      state.sections[educationIdx] = educationSection;
+      return state;
+    });
+    builder.addCase(setExperienceCompany, (state, action) => {
+      const { company, idx: detailsIdx } = action.payload;
+      const experienceIdx = state.sections.findIndex(
+        (section) => section.type === "Experience"
+      );
+      if (experienceIdx === -1) return state;
+      const experienceSection = state.sections[
+        experienceIdx
+      ] as TExperienceSection;
+      experienceSection.details[detailsIdx].company = company;
+      state.sections[experienceIdx] = experienceSection;
+      return state;
+    });
+    builder.addCase(setExperiencePosition, (state, action) => {
+      const { position, idx: detailsIdx } = action.payload;
+      const experienceIdx = state.sections.findIndex(
+        (section) => section.type === "Experience"
+      );
+      if (experienceIdx === -1) return state;
+      const experienceSection = state.sections[
+        experienceIdx
+      ] as TExperienceSection;
+      experienceSection.details[detailsIdx].position = position;
+      state.sections[experienceIdx] = experienceSection;
+      return state;
+    });
     builder.addCase(setResume, (state, action) => action.payload);
     builder.addCase(rearrangeSection, (state, action) => {
       const sections = state.sections;
@@ -48,7 +105,6 @@ const exports = {
     });
     builder.addCase(rearrangeBullets, (state, action) => {
       const { type, idx, startIdx, endIdx } = action.payload;
-      console.log(type, idx, startIdx, endIdx);
       // Decompose state and check for errors
       if (startIdx === endIdx) return state;
       const section = state.sections.find((section) => section.type === type);
