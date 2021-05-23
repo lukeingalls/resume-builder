@@ -1,6 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 import resume from "../../mock_data/resume";
 import {
+  changeAboutMeDescription,
+  changeName,
+  changeTitle,
   rearrangeBullets,
   rearrangeSection,
   setResume,
@@ -8,6 +11,27 @@ import {
 
 const exports = {
   resume: createReducer(resume, (builder) => {
+    builder.addCase(changeAboutMeDescription, (state, action) => {
+      const { description } = action.payload;
+      const AboutMe = state.sections.find(
+        (section) => section.type === "About Me"
+      );
+      if (!AboutMe) return state;
+      AboutMe.description = description;
+      const idx = state.sections.indexOf(AboutMe);
+      state.sections[idx] = AboutMe;
+      return state;
+    });
+    builder.addCase(changeName, (state, action) => {
+      const { name } = action.payload;
+      state.user.name = name;
+      return state;
+    });
+    builder.addCase(changeTitle, (state, action) => {
+      const { title } = action.payload;
+      state.user.current_title = title;
+      return state;
+    });
     builder.addCase(setResume, (state, action) => action.payload);
     builder.addCase(rearrangeSection, (state, action) => {
       const sections = state.sections;

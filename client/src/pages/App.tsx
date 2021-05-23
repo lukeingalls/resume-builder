@@ -6,6 +6,7 @@ import {
 } from "react-beautiful-dnd";
 import { useAppDispatch } from "@store/hooks";
 import { rearrangeBullets, rearrangeSection } from "@store/actions/resume";
+import { BrowserRouter, Switch } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -38,7 +39,11 @@ function App() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Resume />
+      <BrowserRouter>
+        <Switch>
+          <Resume />
+        </Switch>
+      </BrowserRouter>
     </DragDropContext>
   );
 }

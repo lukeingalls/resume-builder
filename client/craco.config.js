@@ -12,7 +12,7 @@ module.exports = {
   },
   webpack: {
     alias: {
-      "@components": getAliasPath("components/*"),
+      "@components": getAliasPath("src/components/"),
       "@resume-sections": getAliasPath("src/components/resume/sections/"),
       "@resume-layouts": getAliasPath("src/components/resume/layouts/"),
       "@store": getAliasPath("src/store/"),

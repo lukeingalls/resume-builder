@@ -10,6 +10,10 @@ type Rename<T, K extends keyof T, N extends string> = Pick<
 > &
   { [P in N]: T[K] };
 
+export type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
+
 /* ==============================================
  * =============== Generic Types ================
  * ==============================================

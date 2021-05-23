@@ -1,10 +1,12 @@
-import { useAppSelector } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import SectionSelector from "@resume-sections/Selector";
 import { isValidSection } from "../../types";
+import { changeName, changeTitle } from "@store/actions/resume";
 
 export default function Resume() {
   const resume = useAppSelector((state) => state.resume);
+  const dispatch = useAppDispatch();
   const printUrl = (url: URL) => {
     return `${url.hostname}${url.pathname}`;
   };
@@ -13,8 +15,18 @@ export default function Resume() {
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold">{resume.user.name}</h1>
-      <h2 className="text-2xl">{resume.user.current_title}</h2>
+      <input
+        className="text-3xl font-bold w-full"
+        placeholder="Firstname Lastname"
+        value={resume.user.name}
+        onChange={(e) => dispatch(changeName({ name: e.target.value }))}
+      />
+      <input
+        className="text-2xl w-full"
+        placeholder="Current Title"
+        value={resume.user.current_title}
+        onChange={(e) => dispatch(changeTitle({ title: e.target.value }))}
+      />
       <div className="grid grid-cols-2 grid-rows-2 my-4">
         {resume.user.contact_info.links.map((link) => {
           const { site, url } = link;
