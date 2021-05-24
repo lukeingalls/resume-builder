@@ -153,10 +153,7 @@ const exports = {
         end: null,
         ...detail.date,
       };
-      const [year, month] = date.split("-");
-      const num_year = parseInt(year);
-      const num_month = parseInt(month) - 1;
-      initialDate.start = new Date(num_year, num_month);
+      initialDate.start = date;
       detail.date = initialDate;
     });
     builder.addCase(setEndDate, (state, action) => {
@@ -174,10 +171,7 @@ const exports = {
         ...detail.date,
       };
       if (date) {
-        const [year, month] = date.split("-");
-        const num_year = parseInt(year);
-        const num_month = parseInt(month);
-        initialDate.end = new Date(num_year, num_month - 1);
+        initialDate.end = date;
       } else initialDate.end = null;
 
       detail.date = initialDate;

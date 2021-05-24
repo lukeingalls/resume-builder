@@ -35,11 +35,11 @@ export const setLocationState =
   createAction<{ state: string; idx: number }>("SET_LOCATION_STATE");
 
 export const setEndDate =
-  createAction<{ date: string | null; idx: number; sectionType: string }>(
+  createAction<{ date: Date | null; idx: number; sectionType: string }>(
     "SET_END_DATE"
   );
 export const setStartDate =
-  createAction<{ date: string; idx: number; sectionType: string }>(
+  createAction<{ date: Date; idx: number; sectionType: string }>(
     "SET_START_DATE"
   );
 
