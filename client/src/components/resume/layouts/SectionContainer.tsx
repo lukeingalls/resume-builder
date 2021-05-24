@@ -3,6 +3,7 @@ import {
   DraggableProvidedDraggableProps,
   DraggableProvidedDragHandleProps,
 } from "react-beautiful-dnd";
+import { GrDrag } from "react-icons/gr";
 
 // https://stackoverflow.com/a/65332819/14034323
 interface SectionContainerProps extends React.ComponentPropsWithoutRef<"div"> {
@@ -18,10 +19,13 @@ export default React.forwardRef<HTMLDivElement, SectionContainerProps>(
     ref
   ) => {
     return (
-      <div className="my-5" ref={ref} {...draggableProps} {...dragHandleProps}>
+      <div className="my-5" ref={ref} {...draggableProps}>
         {title && (
           <>
-            <h3 className="text-lg font-bold">{title}</h3>
+            <span className="flex items-center" {...dragHandleProps}>
+              <GrDrag className="mr-3" />
+              <h3 className="text-lg font-bold ">{title}</h3>
+            </span>
             <hr className="mb-3" />
           </>
         )}
