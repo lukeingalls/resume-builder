@@ -58,8 +58,8 @@ const education: TEducationSection = {
         "Sewall scholarship recipient",
       ],
       date: {
-        end: new Date(2021, 5),
-        start: new Date(2018, 8),
+        end: new Date(2021, 4),
+        start: new Date(2018, 7),
       },
     },
   ],
@@ -77,7 +77,7 @@ const experience: TExperienceSection = {
       ],
       date: {
         end: null,
-        start: new Date(2021, 4),
+        start: new Date(2021, 3),
       },
       company: "Kapwing",
       location: {
@@ -94,8 +94,8 @@ const experience: TExperienceSection = {
       ],
       company: "Charles Schwab",
       date: {
-        end: new Date(2020, 8),
-        start: new Date(2020, 5),
+        end: new Date(2020, 7),
+        start: new Date(2020, 4),
       },
       location: {
         city: "Lone Tree",

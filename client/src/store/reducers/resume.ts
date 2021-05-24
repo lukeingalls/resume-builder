@@ -9,9 +9,14 @@ import {
   rearrangeSection,
   setEducationDegree,
   setEducationInstitution,
+  setEndDate,
   setExperienceCompany,
   setExperiencePosition,
+  setLocationCity,
+  setLocationRemote,
+  setLocationState,
   setResume,
+  setStartDate,
 } from "../actions/resume";
 
 const exports = {
@@ -88,6 +93,96 @@ const exports = {
       experienceSection.details[detailsIdx].position = position;
       state.sections[experienceIdx] = experienceSection;
       return state;
+    });
+    builder.addCase(setLocationCity, (state, action) => {
+      const { city, idx: detailsIdx } = action.payload;
+      const experienceIdx = state.sections.findIndex(
+        (section) => section.type === "Experience"
+      );
+      if (experienceIdx === -1) return state;
+      const experienceSection = state.sections[
+        experienceIdx
+      ] as TExperienceSection;
+      const location = { ...experienceSection.details[detailsIdx].location };
+      location.city = city;
+      experienceSection.details[detailsIdx].location = location;
+      state.sections[experienceIdx] = experienceSection;
+      return state;
+    });
+    builder.addCase(setLocationRemote, (state, action) => {
+      const { remote, idx: detailsIdx } = action.payload;
+      const experienceIdx = state.sections.findIndex(
+        (section) => section.type === "Experience"
+      );
+      if (experienceIdx === -1) return state;
+      const experienceSection = state.sections[
+        experienceIdx
+      ] as TExperienceSection;
+      const location = { ...experienceSection.details[detailsIdx].location };
+      location.remote = remote;
+      experienceSection.details[detailsIdx].location = location;
+      state.sections[experienceIdx] = experienceSection;
+      return state;
+    });
+    builder.addCase(setLocationState, (redux_state, action) => {
+      const { state, idx: detailsIdx } = action.payload;
+      const experienceIdx = redux_state.sections.findIndex(
+        (section) => section.type === "Experience"
+      );
+      if (experienceIdx === -1) return redux_state;
+      const experienceSection = redux_state.sections[
+        experienceIdx
+      ] as TExperienceSection;
+      const location = { ...experienceSection.details[detailsIdx].location };
+      location.state = state;
+      experienceSection.details[detailsIdx].location = location;
+      redux_state.sections[experienceIdx] = experienceSection;
+      return redux_state;
+    });
+    builder.addCase(setStartDate, (state, action) => {
+      const { date, idx: detailsIdx, sectionType } = action.payload;
+      const sectionIdx = state.sections.findIndex(
+        (section) => section.type === sectionType
+      );
+      if (sectionIdx === -1) return state;
+      const section = state.sections[sectionIdx];
+      const detail = section.details?.[detailsIdx];
+      if (!detail) return state;
+      const initialDate = {
+        start: new Date(),
+        end: null,
+        ...detail.date,
+      };
+      console.log("og date: ", date);
+      const [year, month] = date.split("-");
+      const num_year = parseInt(year);
+      // const num_month = parseInt(month) === 12 ? 0 : parseInt(month);
+      const num_month = parseInt(month) - 1;
+      console.log(num_year, num_month);
+      initialDate.start = new Date(num_year, num_month);
+      console.log("parsed date: ", initialDate.start);
+      detail.date = initialDate;
+    });
+    builder.addCase(setEndDate, (state, action) => {
+      const { date, idx: detailsIdx, sectionType } = action.payload;
+      const sectionIdx = state.sections.findIndex(
+        (section) => section.type === sectionType
+      );
+      if (sectionIdx === -1) return state;
+      const section = state.sections[sectionIdx];
+      const detail = section.details?.[detailsIdx];
+      if (!detail) return state;
+      const initialDate = {
+        start: new Date(),
+        end: new Date(),
+        ...detail.date,
+      };
+      if (date) {
+        const [year, month] = date?.split("-");
+        initialDate.end = new Date(parseInt(year), parseInt(month));
+      } else initialDate.end = null;
+
+      detail.date = initialDate;
     });
     builder.addCase(setResume, (state, action) => action.payload);
     builder.addCase(rearrangeSection, (state, action) => {

@@ -7,6 +7,8 @@ import { useAppDispatch } from "@store/hooks";
 import {
   setEducationDegree,
   setEducationInstitution,
+  setEndDate,
+  setStartDate,
 } from "@store/actions/resume";
 
 interface EducationDetailsProps {
@@ -21,14 +23,63 @@ export default function EducationDetails({
     <>
       {_education.map((education, idx) => {
         const { date, location } = education;
-        const dateString = date
-          ? `${getDateMonthString(date.start)} — ${getDateMonthString(
-              date.end
-            )}`
-          : "";
         return (
           <DetailsContainer>
-            {date && <p className="col-span-3">{dateString}</p>}
+            {date && (
+              <p className="col-span-3">
+                <label className="flex justify-between pr-5">
+                  Start:{" "}
+                  <input
+                    type="month"
+                    value={getDateMonthString(date.start)}
+                    onChange={(e) => {
+                      dispatch(
+                        setStartDate({
+                          date: e.target.value,
+                          idx,
+                          sectionType: "Education",
+                        })
+                      );
+                    }}
+                  />
+                </label>
+                <label className="flex justify-between pr-5">
+                  End:{" "}
+                  <input
+                    type="month"
+                    value={getDateMonthString(date.end)}
+                    onChange={(e) => {
+                      console.log(e.target.value);
+                      dispatch(
+                        setEndDate({
+                          date: e.target.value,
+                          idx,
+                          sectionType: "Education",
+                        })
+                      );
+                    }}
+                  />
+                </label>
+                <label className="block">
+                  Present?{" "}
+                  <input
+                    type="checkbox"
+                    checked={!date.end}
+                    onChange={(e) =>
+                      dispatch(
+                        setEndDate({
+                          date: e.target.checked
+                            ? null
+                            : getDateMonthString(new Date()),
+                          sectionType: "Education",
+                          idx,
+                        })
+                      )
+                    }
+                  />
+                </label>
+              </p>
+            )}
             <div className="col-span-9">
               <h4 className="text-lg font-bold">
                 <Input

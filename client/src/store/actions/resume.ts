@@ -19,12 +19,29 @@ export const setEducationInstitution = createAction<{
 export const setExperiencePosition = createAction<{
   position: string;
   idx: number;
-}>("CHANGE_EXPERIENCE_TITLE");
+}>("SET_EXPERIENCE_TITLE");
 
 export const setExperienceCompany = createAction<{
   company: string;
   idx: number;
-}>("CHANGE_EXPERIENCE_COMPANY");
+}>("SET_EXPERIENCE_COMPANY");
+
+export const setLocationCity =
+  createAction<{ city: string; idx: number }>("SET_LOCATION_CITY");
+export const setLocationRemote = createAction<{ remote: boolean; idx: number }>(
+  "SET_LOCATION_REMOTE"
+);
+export const setLocationState =
+  createAction<{ state: string; idx: number }>("SET_LOCATION_STATE");
+
+export const setEndDate =
+  createAction<{ date: string | null; idx: number; sectionType: string }>(
+    "SET_END_DATE"
+  );
+export const setStartDate =
+  createAction<{ date: string; idx: number; sectionType: string }>(
+    "SET_START_DATE"
+  );
 
 export const setResume = createAction<TResume | undefined>("SET_RESUME");
 

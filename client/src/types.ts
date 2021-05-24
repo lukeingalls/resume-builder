@@ -33,12 +33,14 @@ export type TContactInfo = {
   phone_number: string;
 };
 
+export type TDate = {
+  end: Date | null;
+  start: Date;
+};
+
 export type TDetails = {
   bullets?: string[];
-  date?: {
-    end: Date | null;
-    start: Date;
-  };
+  date?: TDate;
   description?: string;
   location?: TLocation;
   skill?: TSkill;
@@ -48,6 +50,7 @@ export type TDetails = {
 
 export type TLocation = {
   city?: string;
+  remote?: boolean;
   state?: string;
 };
 
