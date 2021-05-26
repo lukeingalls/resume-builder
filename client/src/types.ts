@@ -128,9 +128,18 @@ export type TSkillsSection = Required<
 
 export type TSkillsDetails = Pick<TDetails, "skill">;
 
+export type TSections = {
+  aboutMe?: TAboutMeSection;
+  education?: TEducationSection;
+  experience?: TExperienceSection;
+  skills?: TSkillsSection;
+};
+
 export type TResume = {
   user: TUser;
-  sections: TSection<TDetails>[];
+  // sections: TSection<TDetails>[];
+  sections: TSections;
+  sectionsOrder: Array<keyof TSections>;
 };
 
 export function isValidSection(x: any) {

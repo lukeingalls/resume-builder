@@ -11,7 +11,7 @@ export default function Resume() {
     return `${url.hostname}${url.pathname}`;
   };
 
-  const sections = resume.sections.filter((section) => isValidSection(section));
+  // const sections = resume.sections.filter((section) => isValidSection(section));
 
   return (
     <div className="container mx-auto p-8">
@@ -27,6 +27,7 @@ export default function Resume() {
         value={resume.user.current_title}
         onChange={(e) => dispatch(changeTitle({ title: e.target.value }))}
       />
+      {/* Cannot use grid layout with react-beautiful-dnd */}
       <div className="grid grid-cols-2 grid-rows-2 my-4">
         {resume.user.contact_info.links.map((link) => {
           const { site, url } = link;
@@ -46,7 +47,9 @@ export default function Resume() {
       <Droppable droppableId="resume-sections" type="RESUME_SECTION">
         {(provided, snapshot) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            {sections.map((section, idx) => {
+            {resume.sectionsOrder.map((sectionKey, idx) => {
+              const section = resume.sections[sectionKey];
+              if (!section) return null;
               return (
                 <Draggable
                   draggableId={section.type}

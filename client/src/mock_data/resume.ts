@@ -150,7 +150,14 @@ const projects: TSection<TDetails> = {
 
 const resume: TResume = {
   user: me,
-  sections: [aboutMe, education, experience, skills, projects],
+  sections: {
+    aboutMe,
+    education,
+    experience,
+    skills,
+    // projects,
+  },
+  sectionsOrder: ["aboutMe", "education", "experience", "skills"],
 };
 
 export default resume;
