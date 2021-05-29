@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import SectionSelector from "@resume-sections/Selector";
-import { isValidSection } from "../../types";
 import { changeName, changeTitle } from "@store/actions/resume";
 
 export default function Resume() {
@@ -10,6 +9,8 @@ export default function Resume() {
   const printUrl = (url: URL) => {
     return `${url.hostname}${url.pathname}`;
   };
+
+  const education = useAppSelector((state) => state.education);
 
   // const sections = resume.sections.filter((section) => isValidSection(section));
 
@@ -47,6 +48,20 @@ export default function Resume() {
       <Droppable droppableId="resume-sections" type="RESUME_SECTION">
         {(provided, snapshot) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
+            <Draggable
+              draggableId={education.type}
+              index={7}
+              key={education.header}
+            >
+              {(provided, snapshot) => (
+                <SectionSelector
+                  section={education}
+                  draggableProps={provided.draggableProps}
+                  dragHandleProps={provided.dragHandleProps}
+                  ref={provided.innerRef}
+                />
+              )}
+            </Draggable>{" "}
             {resume.sectionsOrder.map((sectionKey, idx) => {
               const section = resume.sections[sectionKey];
               if (!section) return null;

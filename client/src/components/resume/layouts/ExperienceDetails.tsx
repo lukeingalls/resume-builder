@@ -26,7 +26,7 @@ export default function ExperienceDetails({
         const { date, location } = experience;
         return (
           <DetailsContainer>
-            <DateSelector date={date} idx={idx} type="Experience" />
+            {/* <DateSelector date={date} idx={idx} type="Experience" /> */}
             <div className="col-span-9">
               <h4 className="text-lg">
                 <Input

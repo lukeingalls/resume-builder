@@ -22,7 +22,9 @@ const Education = React.forwardRef<HTMLDivElement, EducationProps>(
         draggableProps={draggableProps}
         dragHandleProps={dragHandleProps}
       >
-        <EducationDetails education={educations.details} />
+        {educations.details.map((detail, idx) => {
+          return <EducationDetails education={detail} idx={idx} />;
+        })}
       </SectionContainer>
     );
   }
