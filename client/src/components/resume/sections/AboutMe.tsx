@@ -1,7 +1,6 @@
 import TextArea from "@components/utilities/TextArea";
 import SectionContainer from "@resume-layouts/SectionContainer";
-import { changeAboutMeDescription } from "@store/actions/resume";
-import { useAppDispatch } from "@store/hooks";
+import useAboutMeReducers from "@store/dispatchers/aboutMe";
 import React from "react";
 import {
   DraggableProvidedDraggableProps,
@@ -17,7 +16,7 @@ interface AboutMeProps extends React.ComponentPropsWithoutRef<"div"> {
 
 const AboutMe = React.forwardRef<HTMLDivElement, AboutMeProps>(
   ({ about_me, draggableProps, dragHandleProps }, ref) => {
-    const dispatch = useAppDispatch();
+    const { setDescription } = useAboutMeReducers();
     return (
       <SectionContainer
         title={about_me.header}
@@ -27,9 +26,7 @@ const AboutMe = React.forwardRef<HTMLDivElement, AboutMeProps>(
       >
         <TextArea
           value={about_me.description}
-          onChange={(e) =>
-            dispatch(changeAboutMeDescription({ description: e.target.value }))
-          }
+          onChange={(e) => setDescription(e.target.value)}
         />
       </SectionContainer>
     );

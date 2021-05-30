@@ -67,6 +67,6 @@ const experience = {
       position: "Frontend Engineering Intern",
     },
   },
-  experienceOrder: [0, 1],
+  detailsOrder: [0, 1],
   type: "Experience",
 };

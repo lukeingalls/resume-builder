@@ -10,6 +10,7 @@ export default function Resume() {
     return `${url.hostname}${url.pathname}`;
   };
 
+  const aboutMe = useAppSelector((state) => state.aboutMe);
   const education = useAppSelector((state) => state.education);
   const experience = useAppSelector((state) => state.experience);
 
@@ -48,6 +49,20 @@ export default function Resume() {
         {(provided, snapshot) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             <Draggable
+              draggableId={aboutMe.type}
+              index={6}
+              key={aboutMe.header}
+            >
+              {(provided, snapshot) => (
+                <SectionSelector
+                  section={aboutMe}
+                  draggableProps={provided.draggableProps}
+                  dragHandleProps={provided.dragHandleProps}
+                  ref={provided.innerRef}
+                />
+              )}
+            </Draggable>
+            <Draggable
               draggableId={education.type}
               index={7}
               key={education.header}
@@ -68,7 +83,7 @@ export default function Resume() {
             >
               {(provided, snapshot) => (
                 <SectionSelector
-                  section={education}
+                  section={experience}
                   draggableProps={provided.draggableProps}
                   dragHandleProps={provided.dragHandleProps}
                   ref={provided.innerRef}
