@@ -22,7 +22,9 @@ const Experience = React.forwardRef<HTMLDivElement, ExperienceProps>(
         draggableProps={draggableProps}
         dragHandleProps={dragHandleProps}
       >
-        <ExperienceDetails experiences={experiences.details} />
+        {experiences.details.map((experience, idx) => (
+          <ExperienceDetails experience={experience} idx={idx} />
+        ))}
       </SectionContainer>
     );
   }

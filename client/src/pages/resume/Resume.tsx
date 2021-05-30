@@ -11,8 +11,7 @@ export default function Resume() {
   };
 
   const education = useAppSelector((state) => state.education);
-
-  // const sections = resume.sections.filter((section) => isValidSection(section));
+  const experience = useAppSelector((state) => state.experience);
 
   return (
     <div className="container mx-auto p-8">
@@ -62,6 +61,20 @@ export default function Resume() {
                 />
               )}
             </Draggable>{" "}
+            <Draggable
+              draggableId={experience.type}
+              index={8}
+              key={experience.header}
+            >
+              {(provided, snapshot) => (
+                <SectionSelector
+                  section={education}
+                  draggableProps={provided.draggableProps}
+                  dragHandleProps={provided.dragHandleProps}
+                  ref={provided.innerRef}
+                />
+              )}
+            </Draggable>
             {resume.sectionsOrder.map((sectionKey, idx) => {
               const section = resume.sections[sectionKey];
               if (!section) return null;

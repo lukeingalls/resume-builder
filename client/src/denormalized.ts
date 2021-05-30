@@ -1,4 +1,4 @@
-import { getNonce } from "@utilities/utils";
+/* eslint-disable */
 import {
   TAboutMeSection,
   TEducationSection,
