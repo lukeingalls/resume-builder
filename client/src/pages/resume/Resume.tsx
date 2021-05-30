@@ -97,7 +97,7 @@ export default function Resume() {
                 <Draggable
                   draggableId={section.type}
                   index={idx}
-                  key={section.header || idx}
+                  key={section.header}
                 >
                   {(provided, snapshot) => (
                     <SectionSelector
